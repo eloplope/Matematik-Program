@@ -13,7 +13,7 @@ class Trekant {
     triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3);
     // Indtegning af vinkler og mere layout
     if (this.vilk == undefined) {
-      rect(this.x2, this.y2, 30, -30)
+      rect(this.x2, this.y2, 30, -30);
       push();
       strokeWeight(0);
       fill("black");
@@ -33,12 +33,9 @@ class Cirkel {
   }
   draw() {
     circle(this.x3, this.y3, this.x4);
-    line(this.x3, this.y3, this.x3 + this.x4 / 2, this.y3)
-
+    line(this.x3, this.y3, this.x3 + this.x4 / 2, this.y3);
   }
 }
-
-
 
 // klasse for firkant
 class Firkant {
@@ -50,44 +47,49 @@ class Firkant {
   }
   draw() {
     rect(this.x1, this.y1, this.b, this.h);
-    rect(this.x1, this.y1, 30, 30)
-    rect(this.x1 + this.b, this.y1, -30, 30)
-    rect(this.x1, this.y1 + this.h, 30, -30)
-    rect(this.x1 + this.b, this.y1 + this.h, -30, -30)
+    rect(this.x1, this.y1, 30, 30);
+    rect(this.x1 + this.b, this.y1, -30, 30);
+    rect(this.x1, this.y1 + this.h, 30, -30);
+    rect(this.x1 + this.b, this.y1 + this.h, -30, -30);
     // Indtegning af vinkler og mere layout
     push();
     strokeWeight(0);
     fill("black");
-    textSize(((this.h * 0.15)));
+    textSize(this.h * 0.15);
     text("90°", this.x1 * 1.11, this.h + 0.8 * this.y1);
     pop();
   }
 }
 // klasse for funktionen på forsiden
 class Funkpynt {
-  constructor(x,y,bredde) {
+  constructor(x, y, bredde) {
     this.x = x;
     this.y = y;
     this.w = bredde;
   }
   draw() {
-  pop();
-  push();
-  noFill();
-  stroke("red");
-  beginShape();
-  for (let index = 0; index < this.w; index++) {
-    vertex(this.x + index, this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index)+10);
-  }
-  endShape()
-  pop();
-  push();
-  noFill();
-  beginShape();
-  for (let index = 0; index < this.w; index++) {
-    vertex(this.x + index, this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index));
-  }
-  endShape()
+    pop();
+    push();
+    noFill();
+    stroke("red");
+    beginShape();
+    for (let index = 0; index < this.w; index++) {
+      vertex(
+        this.x + index,
+        this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index) + 10
+      );
+    }
+    endShape();
+    pop();
+    push();
+    noFill();
+    beginShape();
+    for (let index = 0; index < this.w; index++) {
+      vertex(
+        this.x + index,
+        this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index)
+      );
+    }
+    endShape();
   }
 }
-

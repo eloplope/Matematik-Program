@@ -56,12 +56,6 @@ function draw() {
     textSize(50);
     text("C", 0.02 * width, 0.825 * height);
 
-
-
-
-
-
-    // Work in progress
     //Beregning af siden a
     if (!isNaN(bside.inp.value()) && bside.inp.value() != "" && bside.inp.value() != "0" && !isNaN(cside.inp.value()) && cside.inp.value() != "" && cside.inp.value() != "0" && !isNaN(Avinkel.inp.value()) && Avinkel.inp.value() != "" && Avinkel.inp.value() != "0") {
         side_a = (Math.round(100 * (sqrt((bside.inp.value()) ** 2 + (cside.inp.value()) ** 2 + (-2) * (bside.inp.value()) * (cside.inp.value()) * Math.cos(Avinkel.inp.value() / (180 / Math.PI)))))) / 100;

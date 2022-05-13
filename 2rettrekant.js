@@ -2,10 +2,8 @@ let akatete;
 let bkatete;
 let mostrecent;
 
-
-
 function setup() {
-  createCanvas(innerWidth-1, innerHeight-1).position(0,0); 
+  createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
   akatete = new InputBox(width * 0.85, height * 0.35, 100);
   //akatete.inp.input(beregnfraa);
   bkatete = new InputBox(width * 0.85, height * 0.45, 100);
@@ -16,20 +14,19 @@ function setup() {
   let menuknappen = new Menuknap();
   let clearknappen = new clearknap();
   let beregnknappen = new beregnknap();
-  
 }
 
 // sidehoved
 let sidehoved = new Sidehoved("Den Retvinklede Trekant");
 
 function draw() {
-  a = akatete.inp.value()
-  b = bkatete.inp.value()
-  c = chypo.inp.value()
+  a = akatete.inp.value();
+  b = bkatete.inp.value();
+  c = chypo.inp.value();
   // layout informationer
-  background('grey');
+  background("grey");
   fill(110, 70, 70);
-  rect(width * 0.7, 0, width * 0.3, height)
+  rect(width * 0.7, 0, width * 0.3, height);
   let FyldFarve = "red";
   let KantFarve = "black";
   let KantStørrelse = 10;
@@ -37,25 +34,40 @@ function draw() {
   fill(FyldFarve);
   stroke(KantFarve);
   //trekanten bliver defineret
-  let trekant = new Trekant(0.13*width,0.22*height,0.13*width,0.7*height,0.58*width,0.7*height);
+  let trekant = new Trekant(
+    0.13 * width,
+    0.22 * height,
+    0.13 * width,
+    0.7 * height,
+    0.58 * width,
+    0.7 * height
+  );
   trekant.draw();
   //beregninger af hypotenuse og vinkler og mere
-  hypo = Math.round(100*sqrt((akatete.inp.value())**2+(bkatete.inp.value())**2))/100;
-  Bvinkel = Math.round(10*(Math.acos(a/c))*180/Math.PI)/10;
-  Avinkel = Math.round(10*(Math.acos(b/c))*180/Math.PI)/10;
-  Areal = Math.round(10*(b*a*0.5))/10;
-  Omkreds = Math.round(10*(parseFloat(b)+parseFloat(a)+parseFloat(c)))/10;
+  hypo =
+    Math.round(
+      100 * sqrt(akatete.inp.value() ** 2 + bkatete.inp.value() ** 2)
+    ) / 100;
+  Bvinkel = Math.round((10 * Math.acos(a / c) * 180) / Math.PI) / 10;
+  Avinkel = Math.round((10 * Math.acos(b / c) * 180) / Math.PI) / 10;
+  Areal = Math.round(10 * (b * a * 0.5)) / 10;
+  Omkreds =
+    Math.round(10 * (parseFloat(b) + parseFloat(a) + parseFloat(c))) / 10;
   // indtegning af hyputenuse
   strokeWeight(0);
   fill("black");
   textSize(100);
   //vinkler
   textSize(50);
-  text(isNaN(Bvinkel) ? "0°": Bvinkel+"°", 0.13*width, 0.2*height);
-  text(isNaN(Avinkel) ? "0°": Avinkel+"°", 0.6*width, 0.7*height);
+  text(isNaN(Bvinkel) ? "0°" : Bvinkel + "°", 0.13 * width, 0.2 * height);
+  text(isNaN(Avinkel) ? "0°" : Avinkel + "°", 0.6 * width, 0.7 * height);
   // Areal og omkreds
-  text(isNaN(Areal) ? "": "Areal: "+ Areal, 0.8*width, 0.2*height);
-  text(isNaN(Omkreds) ? "Omkreds: 0": "Omkreds: "+ Omkreds, 0.8*width, 0.3*height);
+  text(isNaN(Areal) ? "" : "Areal: " + Areal, 0.8 * width, 0.2 * height);
+  text(
+    isNaN(Omkreds) ? "Omkreds: 0" : "Omkreds: " + Omkreds,
+    0.8 * width,
+    0.3 * height
+  );
   //navne på ting
   strokeWeight(0);
   fill("black");
@@ -73,51 +85,49 @@ function draw() {
 
 function myInputEvent() {
   console.log("Yo ma homie! dis what yo typin': ", this.value());
-
 }
 
 function beregn() {
-  if (!isNaN(b) && b != ""&&!isNaN(a) && a != "") {
-    chypo.inp.value(Math.round(100*sqrt((a**2)+(b**2)))/100);
-    console.log("b-a")
-  } else if (!isNaN(b) && b != ""&&!isNaN(c) && c != ""){
-    akatete.inp.value(sqrt((c**2)-(b**2)))
-    console.log("b-c")
-  } else if (!isNaN(a) && a != ""&&!isNaN(c) && c != ""){
-    console.log("a-c")
-    bkatete.inp.value(sqrt((c**2)-(a**2)))
+  if (!isNaN(b) && b != "" && !isNaN(a) && a != "") {
+    chypo.inp.value(Math.round(100 * sqrt(a ** 2 + b ** 2)) / 100);
+    console.log("b-a");
+  } else if (!isNaN(b) && b != "" && !isNaN(c) && c != "") {
+    akatete.inp.value(sqrt(c ** 2 - b ** 2));
+    console.log("b-c");
+  } else if (!isNaN(a) && a != "" && !isNaN(c) && c != "") {
+    console.log("a-c");
+    bkatete.inp.value(sqrt(c ** 2 - a ** 2));
   }
 }
 
-
 class clearknap {
-  constructor(){ 
-  let button = createButton("Clear")
-  button.mousePressed(()=>{
-  akatete.inp.value("");bkatete.inp.value("");chypo.inp.value("");mostrecent = ""
-  })
-  button.position(width*0.8, height*0.63)
-  button.size(0.26*height,0.06*height)
-  button.style('background-color', color(70, 70, 70, 255));
-  button.style('color', color("white"));
-  button.style('font-size', '25px');
+  constructor() {
+    let button = createButton("Clear");
+    button.mousePressed(() => {
+      akatete.inp.value("");
+      bkatete.inp.value("");
+      chypo.inp.value("");
+      mostrecent = "";
+    });
+    button.position(width * 0.8, height * 0.63);
+    button.size(0.26 * height, 0.06 * height);
+    button.style("background-color", color(70, 70, 70, 255));
+    button.style("color", color("white"));
+    button.style("font-size", "25px");
   }
 }
 
 class beregnknap {
-  constructor(){ 
-  let button = createButton("Beregn")
-  button.mousePressed(()=>beregn())
-  button.position(width*0.8, height*0.7)
-  button.size(0.26*height,0.06*height)
-  button.style('background-color', color(70, 70, 70, 255));
-  button.style('color', color("white"));
-  button.style('font-size', '25px');  
+  constructor() {
+    let button = createButton("Beregn");
+    button.mousePressed(() => beregn());
+    button.position(width * 0.8, height * 0.7);
+    button.size(0.26 * height, 0.06 * height);
+    button.style("background-color", color(70, 70, 70, 255));
+    button.style("color", color("white"));
+    button.style("font-size", "25px");
   }
 }
-
-
-
 
 /* bkatete.inp.value(sqrt(chypo.inp.value()**2-akatete.inp.value()**2))
     print("ost2");
