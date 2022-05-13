@@ -63,6 +63,31 @@ class Firkant {
     pop();
   }
 }
-
-
+// klasse for funktionen på forsiden
+class Funkpynt {
+  constructor(x,y,bredde) {
+    this.x = x;
+    this.y = y;
+    this.w = bredde;
+  }
+  draw() {
+  pop();
+  push();
+  noFill();
+  stroke("red");
+  beginShape();
+  for (let index = 0; index < this.w; index++) {
+    vertex(this.x + index, this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index)+10);
+  }
+  endShape()
+  pop();
+  push();
+  noFill();
+  beginShape();
+  for (let index = 0; index < this.w; index++) {
+    vertex(this.x + index, this.y + (0.01 * width * Math.cos(index / 15) - 0.5 * index));
+  }
+  endShape()
+  }
+}
 

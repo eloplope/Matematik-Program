@@ -39,14 +39,11 @@ function draw() {
   let trekantV = new Trekant(0.53 * width, 0.52 * height, 0.43 * width, 0.82 * height, 0.58 * width, 0.82 * height, true);
   trekantV.draw();
   // funktion knap pynt
-  push;
-  noFill();
-  beginShape();
-  for (let index = 0; index < 0.159 * width; index++) {
-    vertex(0.1 * width + index, 0.75 * height + (0.01 * width * Math.cos(index / 15) - 0.5 * index));
-  }
-  endShape()
-  pop();
+  let funktion= new Funkpynt(0.1*width,0.75*height,0.159 * width);
+  funktion.draw();
+
+
+
 }
 
 
