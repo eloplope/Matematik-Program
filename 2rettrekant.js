@@ -28,6 +28,8 @@ function draw() {
   c = chypo.inp.value()
   // layout informationer
   background('grey');
+  fill(110, 70, 70);
+  rect(width * 0.7, 0, width * 0.3, height)
   let FyldFarve = "red";
   let KantFarve = "black";
   let KantStørrelse = 10;
