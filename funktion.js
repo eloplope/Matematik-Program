@@ -1,16 +1,17 @@
 function setup() {
   createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
+  //Input Brede
+  inpwidth=0.25*width;
   //lignings-felt
-  ligning = new InputBox(width * 0.71, height * 0.22, 425);
+  ligning = new InputBox(width * 0.71, height * 0.22, inpwidth);
   //akatete.inp.input(beregnfraa);
   //menukanp
   let menuknappen = new Menuknap();
   //sliders
-  nulslider = new Sliderfelt(width * 0.71, height * 0.4, 400, 55, 100, 0);
-  yslider = new Sliderfelt(width * 0.71, height * 0.55, 400, 50, 250, 0);
-  xslider = new Sliderfelt(width * 0.71, height * 0.7, 400, 200, 500, 0);
-  xskyd = new Sliderfelt(width * 0.71, height * 0.9, 400, -10, 40, -40);
-  yskyd = new Sliderfelt(width * 0.71, height * 0.8, 400, -5, 40, -40);
+  yslider = new Sliderfelt(width * 0.71, height * 0.4, inpwidth, 50, 250, 0);
+  xslider = new Sliderfelt(width * 0.71, height * 0.55, inpwidth, 200, 500, 0);
+  xskyd = new Sliderfelt(width * 0.71, height * 0.7, inpwidth, -10, 40, -40);
+  yskyd = new Sliderfelt(width * 0.71, height * 0.85, inpwidth, -5, 40, -40);
 
 }
 
@@ -22,8 +23,6 @@ function draw() {
   starten = width * 0.6;
   starttekst = starten+15;
   højde = height * 0.35;
-
-  
   // layout informationer
   background('grey');
   strokeWeight(0);
@@ -35,11 +34,12 @@ function draw() {
   textAlign(CENTER);
   //forklaring
   text("Ligning: ", 0.85 * width, 0.2 * height);
-  text("Forskydning: ", 0.85 * width, 0.35 * height);
-  text("y-akse skalering: ", 0.85 * width, 0.50 * height);
-  text("x-akse skalering: ", 0.85 * width, 0.65 * height);
+  text("y-akse skalering:", 0.85 * width, 0.35 * height);
+  text("x-akse skalering: ", 0.85 * width, 0.50 * height);
+  text("y-akse forskydning:", 0.85 * width, 0.65 * height);
+  text("x-akse forskydning:", 0.85 * width, 0.80 * height);
   // graf math
-  nulpunkt = ((nulslider.sli.value() / 100) * height);
+  nulpunkt = (0.55 * height);
   xflyt = xskyd.sli.value();
   yflyt = yskyd.sli.value();
   yslide = yslider.sli.value();
@@ -128,7 +128,7 @@ function draw() {
       lig = ligning.inp.value();
       res = lig.replaceAll("Sin(", "Math.sin(");
       res = res.replaceAll("Cos(", "Math.cos(");
-      res = res.replaceAll("x", (xflyt + (index * 0.01 * (xslide / 100))));
+      res = res.replaceAll("x", (xflyt + (index * 0.01 * (xslide / (starten*0.1)))));
       vertex(index, (detnyenulpunkt - (eval(res) / (yslide * 1 / (højde * 10)))) - (mellemy * yflyt) - mellemy);
     }
     endShape()
@@ -140,7 +140,7 @@ function draw() {
   sidehoved.draw();
 }
 
-
+//linjke funktion til at tegne grafen/koordinatsystem
 function linje(color, wdth, x1, y1, x2, y2) {
   push();
   strokeWeight(wdth);

@@ -6,14 +6,16 @@ let sidehoved = new Sidehoved("Cirklen");
 
 function setup() {
   createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
+  //Input Brede
+  inpwidth=0.25*width;
   //tekst boxe
-  OmkredsBox = new InputBox(width * 0.85, height * 0.65, 100);
+  OmkredsBox = new InputBox(width * 0.71, height * 0.25, inpwidth, inpwidth);
   OmkredsBox.inp.input(beregnfraomkreds);
-  ArealBox = new InputBox(width * 0.85, height * 0.45, 100);
+  ArealBox = new InputBox(width * 0.71, height * 0.4, inpwidth, inpwidth);
   ArealBox.inp.input(beregnfraareal);
-  DiameterBox = new InputBox(width * 0.85, height * 0.55, 100);
+  DiameterBox = new InputBox(width * 0.71, height * 0.55, inpwidth, inpwidth);
   DiameterBox.inp.input(beregnfradiameter);
-  RadiusBox = new InputBox(width * 0.85, height * 0.35, 100);
+  RadiusBox = new InputBox(width * 0.71, height * 0.7, inpwidth, inpwidth);
   RadiusBox.inp.input(beregnfraradius);
 
   //knap til forside
@@ -23,6 +25,9 @@ function setup() {
 function draw() {
   // layout informationer
   background('grey');
+  fill(110, 70, 70);
+  rect(width * 0.7, 0, width * 0.3, height)
+  textAlign(CENTER);
   let FyldFarve = "red";
   let KantFarve = "black";
   let KantStørrelse = 10;
@@ -30,18 +35,16 @@ function draw() {
   fill(FyldFarve);
   stroke(KantFarve);
   // Indtegning af cirkel
-  let cirkel = new Cirkel(width * 0.28, height * 0.5, 400);
+  let cirkel = new Cirkel(width * 0.28, height * 0.5, 0.6*height);
   cirkel.draw();
   // teksten for beregninger
-  areal = Math.round(100 * (parseFloat(RadiusBox.inp.value() ** 2 * Math.PI))) / 100;
-  omkreds = Math.round(100 * (parseFloat(RadiusBox.inp.value() * 2 * Math.PI))) / 100;
   strokeWeight(0);
   fill("black");
   textSize(50);
-  text("Omkreds: ", 0.7 * width, 0.7 * height);
-  text("Areal:", 0.7 * width, 0.5 * height);
-  text("Diameter:", 0.7 * width, 0.6 * height);
-  text("Radius: ", width * 0.7, height * 0.4);
+  text("Omkreds: ", 0.85 * width, 0.2 * height);
+  text("Areal:", 0.85 * width, 0.35 * height);
+  text("Diameter:", 0.85 * width, 0.5 * height);
+  text("Radius: ", 0.85 * width, 0.65 * height);
   // Overskrifter
   textSize(40);
   text("Radius", width * 0.3, height * 0.46);
