@@ -7,13 +7,13 @@ function setup() {
   //Input Brede
   inpwidth = 0.25 * width;
   //tekst boxe
-  OmkredsBox = new InputBox(width * 0.71, height * 0.25, inpwidth, inpwidth);
+  OmkredsBox = new InputBox(width * 0.71, height * 0.25, inpwidth);
   OmkredsBox.inp.input(beregnfraomkreds);
-  ArealBox = new InputBox(width * 0.71, height * 0.4, inpwidth, inpwidth);
+  ArealBox = new InputBox(width * 0.71, height * 0.4, inpwidth);
   ArealBox.inp.input(beregnfraareal);
-  DiameterBox = new InputBox(width * 0.71, height * 0.55, inpwidth, inpwidth);
+  DiameterBox = new InputBox(width * 0.71, height * 0.55, inpwidth);
   DiameterBox.inp.input(beregnfradiameter);
-  RadiusBox = new InputBox(width * 0.71, height * 0.7, inpwidth, inpwidth);
+  RadiusBox = new InputBox(width * 0.71, height * 0.7, inpwidth);
   RadiusBox.inp.input(beregnfraradius);
 
   //knap til forside
@@ -38,11 +38,11 @@ function draw() {
   // teksten for beregninger
   strokeWeight(0);
   fill("black");
-  textSize(50);
-  text("Omkreds: ", 0.85 * width, 0.2 * height);
-  text("Areal:", 0.85 * width, 0.35 * height);
-  text("Diameter:", 0.85 * width, 0.5 * height);
-  text("Radius: ", 0.85 * width, 0.65 * height);
+  textSize(0.065 * height);
+  text("Omkreds: ", 0.85 * width, 0.23 * height);
+  text("Areal:", 0.85 * width, 0.38 * height);
+  text("Diameter:", 0.85 * width, 0.53 * height);
+  text("Radius: ", 0.85 * width, 0.68 * height);
   // Overskrifter
   textSize(40);
   text("Radius", width * 0.3, height * 0.46);
