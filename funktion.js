@@ -90,14 +90,7 @@ function draw() {
     pop();
     detnyenulpunkt = nulpunkt - højde + mellemy;
   }
-  linje(
-    "lightgrey",
-    10,
-    0,
-    detnyenulpunkt + (-1 - yflyt) * mellemy,
-    starten,
-    detnyenulpunkt + (-1 - yflyt) * mellemy
-  );
+
 
   //  XXXXX    XXXXX    //
   //    XXXX  XXXX      //
@@ -132,7 +125,15 @@ function draw() {
       nulpunkt + højde
     );
   }
-
+  //x-aksen indtegnet
+  linje(
+    "lightgrey",
+    10,
+    0,
+    detnyenulpunkt + (-1 - yflyt) * mellemy,
+    starten,
+    detnyenulpunkt + (-1 - yflyt) * mellemy
+  );
   // FFFFFFFFFFFF      //
   // FFF               //
   // FFFFFFFFFFFF      //
@@ -156,9 +157,9 @@ function draw() {
       vertex(
         index,
         detnyenulpunkt -
-          eval(res) / ((yslide * 1) / (højde * 10)) -
-          mellemy * yflyt -
-          mellemy
+        eval(res) / ((yslide * 1) / (højde * 10)) -
+        mellemy * yflyt -
+        mellemy
       );
     }
     endShape();
