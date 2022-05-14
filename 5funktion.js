@@ -156,7 +156,7 @@ function draw() {
     }
     endShape();
   } catch (error) {
-    console.log("fejl i funktion")
+    console.log("fejl i funktion");
     endShape();
   }
 
