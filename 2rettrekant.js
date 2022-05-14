@@ -1,6 +1,4 @@
-let akatete;
-let bkatete;
-let mostrecent;
+
 
 function setup() {
   createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
@@ -100,34 +98,7 @@ function beregn() {
   }
 }
 
-class clearknap {
-  constructor() {
-    let button = createButton("Clear");
-    button.mousePressed(() => {
-      akatete.inp.value("");
-      bkatete.inp.value("");
-      chypo.inp.value("");
-      mostrecent = "";
-    });
-    button.position(width * 0.8, height * 0.63);
-    button.size(0.26 * height, 0.06 * height);
-    button.style("background-color", color(70, 70, 70, 255));
-    button.style("color", color("white"));
-    button.style("font-size", "25px");
-  }
-}
 
-class beregnknap {
-  constructor() {
-    let button = createButton("Beregn");
-    button.mousePressed(() => beregn());
-    button.position(width * 0.8, height * 0.7);
-    button.size(0.26 * height, 0.06 * height);
-    button.style("background-color", color(70, 70, 70, 255));
-    button.style("color", color("white"));
-    button.style("font-size", "25px");
-  }
-}
 
 /* bkatete.inp.value(sqrt(chypo.inp.value()**2-akatete.inp.value()**2))
     print("ost2");

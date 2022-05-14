@@ -50,5 +50,32 @@ class Knapper {
   }
 }
 
+class clearknap {
+  constructor() {
+    let button = createButton("Clear");
+    button.mousePressed(() => {
+      akatete.inp.value("");
+      bkatete.inp.value("");
+      chypo.inp.value("");
+      mostrecent = "";
+    });
+    button.position(width * 0.8, height * 0.63);
+    button.size(0.26 * height, 0.06 * height);
+    button.style("background-color", color(70, 70, 70, 255));
+    button.style("color", color("white"));
+    button.style("font-size", "25px");
+  }
+}
 
+class beregnknap {
+  constructor() {
+    let button = createButton("Beregn");
+    button.mousePressed(() => beregn());
+    button.position(width * 0.8, height * 0.7);
+    button.size(0.26 * height, 0.06 * height);
+    button.style("background-color", color(70, 70, 70, 255));
+    button.style("color", color("white"));
+    button.style("font-size", "25px");
+  }
+}
 

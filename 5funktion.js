@@ -18,6 +18,7 @@ function setup() {
 let sidehoved = new Sidehoved("Den matematiske funktion");
 
 function draw() {
+  
   //lidt tal
   starten = width * 0.6;
   starttekst = starten + 15;
@@ -43,7 +44,6 @@ function draw() {
   yflyt = yskyd.sli.value();
   yslide = yslider.sli.value();
   xslide = xslider.sli.value();
-
   // graf tilbehør xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   stroke(90, 90, 90);
   strokeWeight(5);
