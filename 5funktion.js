@@ -44,6 +44,7 @@ function draw() {
   yflyt = yskyd.sli.value();
   yslide = yslider.sli.value();
   xslide = xslider.sli.value();
+
   // graf tilbehør xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   stroke(90, 90, 90);
   strokeWeight(5);
@@ -80,7 +81,7 @@ function draw() {
   //        YY          //
   //ylinjer og tal
   mellemy = højde / (yslide / 10);
-  for (let index = 1; index < floor(yslide / 5); index++) {
+  for (let index = 0; index < floor(yslide / 5); index++) {
     y1 = nulpunkt - højde + mellemy * index;
     line(0, y1, starten, y1);
     push();
@@ -88,9 +89,8 @@ function draw() {
     strokeWeight(0);
     text(-index - yflyt, starttekst, y1 + 5);
     pop();
-    detnyenulpunkt = nulpunkt - højde + mellemy;
   }
-
+  detnyenulpunkt = nulpunkt - højde + mellemy;
 
   //  XXXXX    XXXXX    //
   //    XXXX  XXXX      //
@@ -111,13 +111,7 @@ function draw() {
     //indtegning af y-aksen
     if (round(xflyt + index, 1) == 0) {
       linje(
-        "lightgrey",
-        10,
-        index * mellem,
-        nulpunkt + højde,
-        index * mellem,
-        nulpunkt - højde
-      );
+        "lightgrey",10,index * mellem,nulpunkt + højde,index * mellem,nulpunkt - højde);
     }
     pop();
     line(
@@ -144,29 +138,25 @@ function draw() {
   // FFF               //
   // FFF               //
   // graf af den matematiske funktion
-  try {
-    stroke("black");
-    noFill();
-    beginShape();
+  stroke("black");
+  noFill();
+  lig = ligning.inp.value();
+  res = lig.replaceAll("Sin(", "Math.sin(");
+  res = res.replaceAll("Cos(", "Math.cos(");
+  res = res.replaceAll( "x", "(xflyt + 0.1 * index * xslide / starten)");
+  fafx = res.replaceAll("^","**" );
+
+  beginShape();
+  try {  
     for (let index = 0; index < starten; index++) {
-      lig = ligning.inp.value();
-      res = lig.replaceAll("Sin(", "Math.sin(");
-      res = res.replaceAll("Cos(", "Math.cos(");
-      res = res.replaceAll(
-        "x",
-        "(" + (xflyt + 0.1 * index * xslide / starten) + ")"
-      );
-      res = res.replaceAll(
-        "^",
-        "**"
-      );
       vertex(
         index,
-        detnyenulpunkt - eval(res) / ((yslide) / (højde * 10)) - mellemy * yflyt - mellemy
+        detnyenulpunkt - eval(fafx) / ((yslide) / (højde * 10)) - mellemy * yflyt - mellemy
       );
     }
     endShape();
   } catch (error) {
+    console.log("fejl i funktion")
     endShape();
   }
 

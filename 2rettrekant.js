@@ -1,5 +1,3 @@
-
-
 function setup() {
   createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
   akatete = new InputBox(width * 0.85, height * 0.35, 100);
@@ -41,17 +39,13 @@ function draw() {
     0.7 * height
   );
   trekant.draw();
-  //beregninger af hypotenuse og vinkler og mere
-  hypo =
-    Math.round(
-      100 * sqrt(akatete.inp.value() ** 2 + bkatete.inp.value() ** 2)
-    ) / 100;
-  Bvinkel = Math.round((10 * Math.acos(a / c) * 180) / Math.PI) / 10;
-  Avinkel = Math.round((10 * Math.acos(b / c) * 180) / Math.PI) / 10;
-  Areal = Math.round(10 * (b * a * 0.5)) / 10;
+  //beregninger af vinkler og mere
+  Bvinkel = round((Math.acos(a / c) * 180) / Math.PI,2);
+  Avinkel = round((Math.acos(b / c) * 180) / Math.PI,2);
+  Areal = round((b * a * 0.5),2);
   Omkreds =
     Math.round(10 * (parseFloat(b) + parseFloat(a) + parseFloat(c))) / 10;
-  // indtegning af hyputenuse
+  // indtegning 
   strokeWeight(0);
   fill("black");
   textSize(100);
@@ -97,8 +91,6 @@ function beregn() {
     bkatete.inp.value(sqrt(c ** 2 - a ** 2));
   }
 }
-
-
 
 /* bkatete.inp.value(sqrt(chypo.inp.value()**2-akatete.inp.value()**2))
     print("ost2");
