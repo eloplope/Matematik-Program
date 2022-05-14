@@ -48,6 +48,7 @@ function draw() {
     0.6 * width,
     0.5 * height
   );
+  sidehoved.draw();
 }
 
 function myInputEvent() {

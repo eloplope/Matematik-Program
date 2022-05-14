@@ -29,7 +29,7 @@ function draw() {
   fill(110, 70, 70);
   rect(width * 0.7, 0, width * 0.3, height);
   fill("black");
-  textSize(50);
+  textSize(0.03 * width);
   textAlign(CENTER);
   //forklaring
   text("Ligning: ", 0.85 * width, 0.2 * height);
@@ -105,8 +105,10 @@ function draw() {
     push();
     textSize(Math.min(20, sqrt(højde / (xslide / 10)) * 6));
     strokeWeight(0);
+    //teksten på x
     text(round(xflyt + index, 1), index * mellem, nulpunkt + (højde + 25));
     text(round(xflyt + index, 1), index * mellem, nulpunkt - (højde + 10));
+    //indtegning af y-aksen
     if (round(xflyt + index, 1) == 0) {
       linje(
         "lightgrey",
@@ -152,14 +154,15 @@ function draw() {
       res = res.replaceAll("Cos(", "Math.cos(");
       res = res.replaceAll(
         "x",
-        xflyt + index * 0.01 * (xslide / (starten * 0.1))
+        "(" + (xflyt + 0.1 * index * xslide / starten) + ")"
+      );
+      res = res.replaceAll(
+        "^",
+        "**"
       );
       vertex(
         index,
-        detnyenulpunkt -
-        eval(res) / ((yslide * 1) / (højde * 10)) -
-        mellemy * yflyt -
-        mellemy
+        detnyenulpunkt - eval(res) / ((yslide) / (højde * 10)) - mellemy * yflyt - mellemy
       );
     }
     endShape();

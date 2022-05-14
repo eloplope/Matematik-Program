@@ -38,7 +38,7 @@ function draw() {
   // teksten for beregninger
   strokeWeight(0);
   fill("black");
-  textSize(0.065 * height);
+  textSize(0.03 * width);
   text("Omkreds: ", 0.85 * width, 0.23 * height);
   text("Areal:", 0.85 * width, 0.38 * height);
   text("Diameter:", 0.85 * width, 0.53 * height);
@@ -102,3 +102,4 @@ function beregnfradiameter() {
 function myInputEvent() {
   console.log("Yo ma homie! dis what yo typin': ", this.value());
 }
+
