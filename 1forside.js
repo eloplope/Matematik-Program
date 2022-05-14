@@ -1,5 +1,3 @@
-let akatete;
-let bkatete;
 
 function setup() {
   createCanvas(innerWidth - 1, innerHeight - 1).position(0, 0);
