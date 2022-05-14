@@ -33,7 +33,7 @@ function setup() {
   //funktion
   let knappenfunktion = new Knapper(
     "Funktion",
-    "funktion.html",
+    "5funktion.html",
     0.09 * width,
     0.5 * height,
     0.175 * width,
@@ -42,7 +42,7 @@ function setup() {
   //knappen til den vilkårlige trekant
   let knappenvilkårligtrekant = new Knapper(
     "Vilkårlig trekant",
-    "5vilktrekant.html",
+    "6vilktrekant.html",
     0.4125 * width,
     0.5 * height,
     0.175 * width,
